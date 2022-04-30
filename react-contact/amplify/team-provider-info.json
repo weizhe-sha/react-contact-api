@@ -1,0 +1,26 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-reactcontact-dev-230530-authRole",
+      "UnauthRoleArn": "arn:aws:iam::472343225089:role/amplify-reactcontact-dev-230530-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::472343225089:role/amplify-reactcontact-dev-230530-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-reactcontact-dev-230530-deployment",
+      "UnauthRoleName": "amplify-reactcontact-dev-230530-unauthRole",
+      "StackName": "amplify-reactcontact-dev-230530",
+      "StackId": "arn:aws:cloudformation:us-east-1:472343225089:stack/amplify-reactcontact-dev-230530/38953c40-c886-11ec-8385-12f85be5207b",
+      "AmplifyAppId": "d3egoyv8bezhwj"
+    },
+    "categories": {
+      "auth": {
+        "reactcontact57bc56e7": {}
+      },
+      "function": {
+        "contactfunction": {
+          "deploymentBucketName": "amplify-reactcontact-dev-230530-deployment",
+          "s3Key": "amplify-builds/contactfunction-2b6d5a7a6a526f6a752f-build.zip"
+        }
+      }
+    }
+  }
+}
