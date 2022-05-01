@@ -18,7 +18,7 @@
       "function": {
         "contactfunction": {
           "deploymentBucketName": "amplify-reactcontact-dev-230530-deployment",
-          "s3Key": "amplify-builds/contactfunction-2b6d5a7a6a526f6a752f-build.zip"
+          "s3Key": "amplify-builds/contactfunction-6f624a51327478574e71-build.zip"
         }
       }
     }

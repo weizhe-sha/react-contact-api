@@ -1,12 +1,12 @@
 import React, {useState} from "react";
 import {useLocation, useNavigate} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 
 const EditContact = (props) => {
     const location = useLocation();
     const navigate = useNavigate();
     const {id, name, phone, email} = location.state.contact;
-    const [newName, setNewName] = useState(name);
     const [newPhone, setNewPhone] = useState(phone);
     const [newEmail, setNewEmail] = useState(email);
     
@@ -16,12 +16,11 @@ const EditContact = (props) => {
 
     const update = (e) => {
         e.preventDefault();
-        if(newName === "" || newPhone === "" || newEmail === ""){
+        if(newPhone === "" || newEmail === ""){
             alert("All the fields are mandatory!");
             return
         }
-        props.updateContactHandler({id, name: newName, phone: newPhone, email: newEmail});
-        setNewName("");
+        props.updateContactHandler({id, name, phone: newPhone, email: newEmail});
         setNewPhone("");
         setNewEmail("");
         navigate("/")
@@ -31,13 +30,7 @@ const EditContact = (props) => {
             <h3>Edit Contact</h3>
             <form className="ui form" onSubmit={update}>
                 <div className="field">
-                    <label>Name</label>
-                    <input 
-                        type="text" 
-                        name="name" 
-                        placeholder="Name" 
-                        value = {newName} 
-                        onChange={(e) => setNewName(e.target.value)}></input>
+                    <h3>{name}</h3>
                     <label>Phone</label>
                     <input 
                         type="text" 
@@ -54,6 +47,9 @@ const EditContact = (props) => {
                         onChange={(e) => setNewEmail(e.target.value)}></input>
                 </div>
                 <button className="ui button blue right">Update</button>
+                <Link to="/">
+                        <button className="ui button blue center">Cancel</button>
+                    </Link>
             </form>
         </div>
     )

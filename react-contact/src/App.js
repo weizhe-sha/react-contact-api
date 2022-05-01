@@ -22,23 +22,26 @@ function App() {
 
 
   const retrieveContacts = async () => {
-    // const response = await api.get("/contacts");
     const response = await api.get("contactapi", "/contact/id");
-    return response.data;
+    return response;
   };
 
   const addContactHandler = async (contact) => {
-    const request = {
+    const request = { body:{
       id: uuid(),
       ...contact
+      } 
     }
 
     const response = await api.post("contactapi", "/contact", request)
+    console.log(response);
     setContacts([...contacts, response.data]);
   };
 
-  const removeContactHandler = async (id) => {
-    await api.delete(`/contacts/${id}`);
+  const removeContactHandler = async (id,name) => {
+    const myinit = {headers: {},};
+    console.log(id,name);
+    await api.del("contactapi", "/contact/object/" + id + "/" + name, myinit);
     const newContactList = contacts.filter((contact) => {
       return contact.id !== id
     });
@@ -48,10 +51,15 @@ function App() {
   };
 
   const updateContactHandler = async (contact) => {
-    const response = await api.put(`/contacts/${contact.id}`, contact)
+    const request = { body:{
+      ...contact
+      } 
+    }
+    console.log(contact);
+    const response = await api.put("contactapi", "/contact", request)
     const {id} = response.data;
     setContacts(contacts.map(contact => {
-      return contact.id === id? {...response.data}: contact;
+    return contact.id === id? {...response.data}: contact;
     }))
   };
 
@@ -86,7 +94,7 @@ function App() {
           <Route path="/" element={<ContactList contacts={searchTerm.length < 1 ? contacts : searchResults} term={searchTerm} searchKeyword={searchHandler}/>}/>
           <Route path="/add" element={<AddContact addContactHandler={addContactHandler}/>}/>
           <Route path="/contact/:id" element={<ContactDetail/>}/>
-          <Route path="/confirmation/:id" element={<DeleteConfirmation getContactId={removeContactHandler}/>}/>
+          <Route path="/confirmation/:id" element={<DeleteConfirmation getContactKey={removeContactHandler}/>}/>
           <Route path="/edit" element={<EditContact updateContactHandler={updateContactHandler}/>}/>
         </Routes>
       </Router> 

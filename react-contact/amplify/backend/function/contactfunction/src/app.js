@@ -138,7 +138,7 @@ app.get(path + '/object' + hashKeyPath + sortKeyPath, function(req, res) {
 
 
 /************************************
-* HTTP put method for insert object *
+* HTTP put method for update object *
 *************************************/
 
 app.put(path, function(req, res) {
@@ -149,14 +149,23 @@ app.put(path, function(req, res) {
 
   let putItemParams = {
     TableName: tableName,
-    Item: req.body
+    Key: { id : req.body.id, name: req.body.name },
+    UpdateExpression: `set #p= :phone, #e= :email`,
+    ExpressionAttributeValues: {
+      ":phone": req.body.phone,
+      ":email": req.body.email
+    },
+    ExpressionAttributeNames:{
+      "#p": "phone",
+      "#e": "email"
+    }
   }
-  dynamodb.put(putItemParams, (err, data) => {
+  dynamodb.update(putItemParams, (err, data) => {
     if (err) {
       res.statusCode = 500;
       res.json({ error: err, url: req.url, body: req.body });
     } else{
-      res.json({ success: 'put call succeed!', url: req.url, data: data })
+      res.json({ success: 'put call succeed!', url: req.url, data: req.body })
     }
   });
 });
@@ -180,7 +189,7 @@ app.post(path, function(req, res) {
       res.statusCode = 500;
       res.json({error: err, url: req.url, body: req.body});
     } else {
-      res.json({success: 'post call succeed!', url: req.url, data: data})
+      res.json({success: 'post call succeed!', url: req.url, data: req.body})
     }
   });
 });
