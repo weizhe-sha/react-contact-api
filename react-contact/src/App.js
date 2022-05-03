@@ -34,13 +34,11 @@ function App() {
     }
 
     const response = await api.post("contactapi", "/contact", request)
-    console.log(response);
     setContacts([...contacts, response.data]);
   };
 
   const removeContactHandler = async (id,name) => {
     const myinit = {headers: {},};
-    console.log(id,name);
     await api.del("contactapi", "/contact/object/" + id + "/" + name, myinit);
     const newContactList = contacts.filter((contact) => {
       return contact.id !== id
@@ -55,7 +53,6 @@ function App() {
       ...contact
       } 
     }
-    console.log(contact);
     const response = await api.put("contactapi", "/contact", request)
     const {id} = response.data;
     setContacts(contacts.map(contact => {

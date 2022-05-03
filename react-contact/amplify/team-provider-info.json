@@ -22,5 +22,35 @@
         }
       }
     }
+  },
+  "appdev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-reactcontact-appdev-194535-authRole",
+      "UnauthRoleArn": "arn:aws:iam::472343225089:role/amplify-reactcontact-appdev-194535-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::472343225089:role/amplify-reactcontact-appdev-194535-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-reactcontact-appdev-194535-deployment",
+      "UnauthRoleName": "amplify-reactcontact-appdev-194535-unauthRole",
+      "StackName": "amplify-reactcontact-appdev-194535",
+      "StackId": "arn:aws:cloudformation:us-east-1:472343225089:stack/amplify-reactcontact-appdev-194535/76686170-c933-11ec-ba88-0aba1f12a1eb",
+      "AmplifyAppId": "d1p4l1ko22qza2"
+    },
+    "categories": {
+      "auth": {
+        "reactcontact57bc56e7": {}
+      },
+      "function": {
+        "contactfunction": {
+          "deploymentBucketName": "amplify-reactcontact-appdev-194535-deployment",
+          "s3Key": "amplify-builds/contactfunction-59702b49314945704364-build.zip"
+        }
+      },
+      "hosting": {
+        "amplifyhosting": {
+          "appId": "d1p4l1ko22qza2",
+          "type": "manual"
+        }
+      }
+    }
   }
 }
